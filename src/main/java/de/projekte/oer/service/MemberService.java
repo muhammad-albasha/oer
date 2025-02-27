@@ -1,8 +1,7 @@
 package de.projekte.oer.service;
 
-import org.springframework.stereotype.Service;
+import de.projekte.oer.entity.Member;
 
-
-@Service
 public interface MemberService {
+    void registerMember(Member member);
 }

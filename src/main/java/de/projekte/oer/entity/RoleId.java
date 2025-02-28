@@ -15,6 +15,7 @@ public class RoleId implements Serializable {
 
 
     @Override
+    // verify if the object is equal to the current object
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (!(obj instanceof RoleId roleId)) return false;
@@ -23,6 +24,7 @@ public class RoleId implements Serializable {
     }
 
     @Override
+    // hash code value of the object
     public int hashCode() {
         return Objects.hash(userId, role);
     }

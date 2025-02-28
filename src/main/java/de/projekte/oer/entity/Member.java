@@ -13,6 +13,7 @@ import java.util.Set;
 @Table(name="members")
 public class Member {
 
+    // The user ID is the primary key
     @Id
     @Column(name = "user_id", length = 50)
     private String userId;

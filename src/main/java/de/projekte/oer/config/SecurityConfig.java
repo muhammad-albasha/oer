@@ -16,22 +16,24 @@ import javax.sql.DataSource;
 public class SecurityConfig {
 
     @Bean
+    //todo: UserDetailsManager-Bean für die Benutzerverwaltung mit JDBC
     public UserDetailsManager userDetailsManager(DataSource dataSource) {
         JdbcUserDetailsManager jdbcUserDetailsManager = new JdbcUserDetailsManager(dataSource);
-        // Query zur Benutzerabfrage
+        //todo: Query zur Benutzerabfrage
         jdbcUserDetailsManager.setUsersByUsernameQuery(
                 "select user_id, pw, active from members where user_id=?");
-        // Query zur Abfrage der Rollen/Authorities
+        //todo:Query zur Abfrage der Rollen/Authorities
         jdbcUserDetailsManager.setAuthoritiesByUsernameQuery(
                 "select user_id, role from roles where user_id=?");
         return jdbcUserDetailsManager;
     }
 
     @Bean
+    //todo: SecurityFilterChain-Bean für die Konfiguration der Sicherheitsregeln
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(configurer ->
                         configurer
-                                // Öffentlich zugängliche Seiten
+                                //todo: Öffentlich zugängliche Seiten
                                 .requestMatchers("/login", "/access-denied", "/register").permitAll()
                                 // Geschützte Bereiche
                                 .requestMatchers("/").hasRole("EMPLOYEE")
@@ -55,6 +57,7 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
+        //todo: Delegierenden PasswordEncoder verwenden (Standard: bcrypt)
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 }

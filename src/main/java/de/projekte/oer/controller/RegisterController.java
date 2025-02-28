@@ -12,14 +12,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class RegisterController {
 
+    // inject MemberService
+
     @Autowired
     private MemberService memberService;
+
+    // add Get mapping for /register
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("member", new Member());
         return "register"; // verweist auf das Thymeleaf-Template register.html
     }
+
+    // add Post mapping for /processRegistration
 
     @PostMapping("/register")
     public String processRegistration(@ModelAttribute("member") Member member) {

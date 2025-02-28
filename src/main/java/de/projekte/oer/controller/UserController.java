@@ -6,13 +6,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class UserController {
 
+    // add Get mapping for /
+
     @GetMapping("/")
     public String showHome() {
 
         return "home";
     }
 
-    // add a request mapping for /leaders
+    // add a Get mapping for /leaders
 
     @GetMapping("/leaders")
     public String leaders() {
@@ -20,7 +22,7 @@ public class UserController {
         return "leaders";
     }
 
-    // add request mapping for /systems
+    // add Get mapping for /systems
 
     @GetMapping("/systems")
     public String systems() {

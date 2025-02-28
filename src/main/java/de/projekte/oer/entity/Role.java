@@ -14,6 +14,7 @@ import jakarta.persistence.Id;
 @IdClass(RoleId.class)
 public class Role {
 
+    // The user ID is foreign key and primary key
     @Id
     @Column(name = "user_id", length = 50)
     private String userId;

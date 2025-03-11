@@ -1,0 +1,38 @@
+services:
+  database:
+    container_name: springboot-mysql
+    image: 'mysql:latest'
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "0213"
+      MYSQL_DATABASE: employee_directory
+      MYSQL_USER: springstudent
+      MYSQL_PASSWORD: springstudent
+    ports:
+      - "3306:3306"
+    volumes:
+      - database_data:/var/lib/mysql
+    networks:
+      - java
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: springboot-mysql
+      PMA_PORT: 3306
+      PMA_USER: springstudent
+      PMA_PASSWORD: springstudent
+    ports:
+      - "8085:80"
+    depends_on:
+      - database
+    networks:
+      - java
+
+volumes:
+  database_data:
+
+networks:
+  java:

@@ -45,6 +45,15 @@ Welcome to home page!
 
 </div>
 
+<div sec:authorize="hasRole('ADMIN') or hasRole('MANAGER')">
+
+    <p>
+        <a th:href="@{/user-management}">User Management</a>
+        (Only for Admin peeps or Manager peeps)
+    </p>
+
+</div>
+
 <hr>
 
 <!-- Add a logout button -->

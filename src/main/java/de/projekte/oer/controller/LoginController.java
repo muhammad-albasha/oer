@@ -11,7 +11,7 @@ public class LoginController {
     @GetMapping("/login")
     public String login() {
 
-        return "login";
+        return "auth/login";
     }
 
     //todo: add request mapping for /access-denied
@@ -19,7 +19,7 @@ public class LoginController {
     @GetMapping("/access-denied")
     public String accessDenied() {
 
-        return "access-denied";
+        return "errors/access-denied";
     }
 
 }

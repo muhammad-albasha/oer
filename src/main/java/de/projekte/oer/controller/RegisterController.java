@@ -22,7 +22,7 @@ public class RegisterController {
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("member", new Member());
-        return "register"; // verweist auf das Thymeleaf-Template register.html
+        return "auth/register"; // verweist auf das Thymeleaf-Template register.html
     }
 
     // add Post mapping for /processRegistration
@@ -30,6 +30,6 @@ public class RegisterController {
     @PostMapping("/register")
     public String processRegistration(@ModelAttribute("member") Member member) {
         memberService.registerMember(member);
-        return "redirect:/login?registerSuccess";
+        return "redirect:auth/login?registerSuccess";
     }
 }

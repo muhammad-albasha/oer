@@ -9,6 +9,9 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class MemberServiceImpl implements MemberService {
 
@@ -35,5 +38,33 @@ public class MemberServiceImpl implements MemberService {
         role.setUserId(member.getUserId());
         role.setRole("ROLE_EMPLOYEE");
         roleRepository.save(role);
+    }
+
+    @Override
+    public List<Member> findAll() {
+        return memberRepository.findAll();
+    }
+
+    @Override
+    public Member findById(String userId) {
+        Optional<Member> result = memberRepository.findById(userId);
+        Member member = null;
+        if (result.isPresent()) {
+            member = result.get();
+        } else {
+            throw new RuntimeException("Did not find member id - " + userId);
+        }
+        return member;
+    }
+
+    @Override
+    public Member save(Member member) {
+        return memberRepository.save(member);
+    }
+
+    @Override
+    public void deleteById(String userId) {
+        memberRepository.deleteById(userId);
+
     }
 }

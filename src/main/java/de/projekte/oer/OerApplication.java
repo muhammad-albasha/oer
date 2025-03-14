@@ -28,6 +28,9 @@ public class OerApplication {
 				admin.setUserId(adminUserId);
 				// Standard-Passwort "admin", verschlüsselt mit dem delegierenden PasswordEncoder
 				admin.setPw(passwordEncoder.encode("admin"));
+				admin.setFirstName("Admin");
+				admin.setLastName("Admin");
+				admin.setEmail("admin@admin.de");
 				admin.setActive(true);
 				memberRepository.save(admin);
 
